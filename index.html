@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #1f1f1f;
+      color: white;
+    }
+
+    /* NAVBAR NORMAL */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      transition: all 0.4s ease;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 300;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .social {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* DYNAMIC ISLAND */
+    .navbar.compact {
+      width: fit-content;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 20px;
+      background: #2a2a2a;
+      padding: 10px 25px;
+      border-radius: 40px;
+      gap: 20px;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar.compact .logo,
+    .navbar.compact .nav-links,
+    .navbar.compact .social {
+      display: contents;
+    }
+
+    /* BANNER FULL */
+    .banner {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .banner h1 {
+      font-size: 60px;
+      font-weight: 600;
+    }
+
+    .content {
+      height: 150vh;
+      padding: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="logo">EKKLÉSIA</div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Sobre</a>
+      <a href="#">Serviços</a>
+      <a href="#">Contato</a>
+    </div>
+
+    <div class="social">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </nav>
+
+  <section class="banner">
+    <h1>Seu Site Aqui</h1>
+  </section>
+
+  <section class="content">
+    <h2>Conteúdo</h2>
+  </section>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('compact');
+      } else {
+        navbar.classList.remove('compact');
+      }
+    });
+  </script>
+
+</body>
+</html>
