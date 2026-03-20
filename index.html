@@ -9,116 +9,56 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background: #fff; color: #000; }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px; }
     .logo { font-size: 24px; font-weight: 900; }
     .menu-btn { font-size: 24px; cursor: pointer; }
 
     .menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 70%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      padding: 20px;
-      transition: 0.3s;
+      position: fixed; top: 0; right: -100%; width: 70%; height: 100%;
+      background: #000; color: #fff; padding: 20px; transition: 0.3s; z-index: 20;
     }
-
     .menu.active { right: 0; }
 
-    .menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .menu-header { display: flex; justify-content: space-between; align-items: center; }
+    .close-btn { font-size: 26px; cursor: pointer; }
 
-    .close-btn {
-      font-size: 26px;
-      cursor: pointer;
-    }
+    .menu a { display: block; margin: 20px 0; text-decoration: none; color: #fff; font-size: 18px; }
 
-    .menu a {
-      display: block;
-      margin: 20px 0;
-      text-decoration: none;
-      color: #fff;
-      font-size: 18px;
-    }
+    .product { padding: 20px; }
+    .product img { width: 100%; border-radius: 12px; transition: 0.3s; }
 
-    .product {
-      padding: 20px;
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
-
-    .info {
-      margin-top: 15px;
-      padding-left: 5px;
-    }
-
+    .info { margin-top: 15px; padding-left: 5px; }
     .title { font-size: 26px; font-weight: 900; }
     .price { font-size: 22px; font-weight: 700; margin: 10px 0; }
     .desc { font-size: 16px; opacity: 0.7; }
 
-    .modal {
-      position: fixed;
-      bottom: -100%;
-      left: 0;
-      width: 100%;
-      height: 90%;
-      background: #fff;
-      border-radius: 20px 20px 0 0;
-      padding: 20px;
-      transition: 0.3s;
-      overflow-y: auto;
+    /* BACKDROP */
+    .backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      opacity: 0; pointer-events: none; transition: 0.3s; z-index: 10;
     }
+    .backdrop.active { opacity: 1; pointer-events: all; }
 
+    .modal {
+      position: fixed; bottom: -100%; left: 0; width: 100%; height: 90%;
+      background: #fff; border-radius: 20px 20px 0 0; padding: 20px;
+      transition: 0.3s; overflow-y: auto; z-index: 15;
+    }
     .modal.active { bottom: 0; }
 
-    .sizes button {
-      margin: 5px;
-      padding: 10px;
-      border: 1px solid #000;
-      background: none;
-      cursor: pointer;
-    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; }
 
-    .sizes button.active {
-      background: #000;
-      color: #fff;
+    .sizes button {
+      margin: 5px; padding: 10px; border: 1px solid #000; background: none; cursor: pointer;
     }
+    .sizes button.active { background: #000; color: #fff; }
 
     .buy-btn {
-      width: 100%;
-      padding: 15px;
-      background: #25D366;
-      color: #fff;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 10px;
-      margin-top: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      width: 100%; padding: 15px; background: #25D366; color: #fff; border: none;
+      font-size: 18px; font-weight: bold; border-radius: 10px; margin-top: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
-    .buy-btn span {
-      font-size: 20px;
-    }
+    .buy-btn span { font-size: 20px; }
   </style>
 </head>
 <body>
@@ -145,15 +85,22 @@
     onmouseout="this.src='SaveClip.App_653874286_18570368437007578_8379778417689073870_n.jpg'">
 
   <div class="info">
-    <div class="title">Camiseta Fé</div>
-    <div class="price">R$ 79,90</div>
-    <div class="desc">Minimalista, forte e cheia de significado.</div>
+    <div class="title">Camiseta The World is My Parish</div>
+    <div class="price">R$ 150,90</div>
+    <div class="desc">Camiseta Cristã EKKLESÍA</div>
   </div>
 </section>
 
+<!-- BACKDROP -->
+<div class="backdrop" id="backdrop" onclick="closeModal()"></div>
+
 <div class="modal" id="modal">
-  <h2>Camiseta Fé</h2>
-  <p>Malha premium, confortável e resistente. Estampa durável.</p>
+  <div class="modal-header">
+    <h2>The World is My Parish</h2>
+    <div class="close-btn" onclick="closeModal()">✕</div>
+  </div>
+
+  <p>Camiseta Cristã EKKLESÍA</p>
 
   <h3>Tamanho</h3>
   <div class="sizes">
@@ -163,11 +110,8 @@
     <button onclick="selectSize(this)">GG</button>
   </div>
 
-  <h3>Pagamento</h3>
-  <p>Pix, cartão ou dinheiro.</p>
-
   <button class="buy-btn" onclick="buy()">
-    <span>📱</span> Finalizar no WhatsApp
+    <span>📞</span> Finalizar no WhatsApp
   </button>
 </div>
 
@@ -178,6 +122,12 @@
 
   function openModal() {
     document.getElementById('modal').classList.add('active');
+    document.getElementById('backdrop').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.getElementById('backdrop').classList.remove('active');
   }
 
   function selectSize(btn) {
@@ -187,8 +137,8 @@
 
   function buy() {
     const size = document.querySelector('.sizes button.active')?.innerText || 'não selecionado';
-    const text = `Olá, quero comprar a Camiseta Fé - Tamanho: ${size}`;
-    const url = `https://wa.me/5599999999999?text=${encodeURIComponent(text)}`;
+    const text = `Olá, quero comprar a Camiseta Ekklesía - Tamanho: ${size}`;
+    const url = `https://wa.me/5541997453188?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   }
 </script>
