@@ -19,7 +19,6 @@
       color: white;
     }
 
-    /* NAVBAR NORMAL */
     .navbar {
       position: fixed;
       top: 0;
@@ -33,15 +32,9 @@
       z-index: 1000;
     }
 
-    .logo {
-      font-weight: 600;
-      font-size: 20px;
-    }
+    .logo { font-weight: 600; font-size: 20px; }
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
+    .nav-links { display: flex; gap: 30px; }
 
     .nav-links a {
       text-decoration: none;
@@ -50,22 +43,12 @@
       transition: 0.3s;
     }
 
-    .nav-links a:hover {
-      opacity: 0.6;
-    }
+    .nav-links a:hover { opacity: 0.6; }
 
-    .social {
-      display: flex;
-      gap: 20px;
-    }
+    .social { display: flex; gap: 20px; }
 
-    .social a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-    }
+    .social a { color: white; text-decoration: none; font-size: 14px; }
 
-    /* DYNAMIC ISLAND */
     .navbar.compact {
       width: fit-content;
       left: 50%;
@@ -85,46 +68,119 @@
       display: contents;
     }
 
-    /* BANNER FULL */
     .banner {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-
-  background-image: url('landscape-mountains-black-white.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  background-attachment: fixed;
-}
-
-
-.banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-      .banner h1 {
-  position: absolute;
-  bottom: 40px;
-  left: 50px;
-
-  font-size: 200px;
-  font-weight: 900;
-
-  z-index: 1;
-}
-
-    .content {
-      height: 150vh;
-      padding: 50px;
+      height: 100vh;
+      position: relative;
+      background-image: url('landscape-mountains-black-white.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .banner h1 {
+      position: absolute;
+      bottom: 40px;
+      left: 50px;
+      font-size: 120px;
+      font-weight: 900;
+      z-index: 1;
+    }
+
+    /* SECTION PRODUTO */
+    .products {
+      background: #1f1f1f;
+      padding: 100px 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 300px;
+      cursor: pointer;
+    }
+
+    .card-img {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      transition: opacity 0.4s ease;
+    }
+
+    .img-back { opacity: 0; }
+
+    .card:hover .img-back { opacity: 1; }
+    .card:hover .img-front { opacity: 0; }
+
+    .card h3 { margin-top: 15px; font-size: 20px; }
+    .card p { opacity: 0.7; font-size: 14px; }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: #2a2a2a;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .modal-content h2 { margin-bottom: 10px; }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .size {
+      padding: 10px 15px;
+      border: 1px solid white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .size.active {
+      background: white;
+      color: black;
+    }
+
+    .buy-btn {
+      margin-top: 20px;
+      padding: 15px;
+      width: 100%;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
   </style>
 </head>
 
@@ -150,12 +206,42 @@
     <h1>EKKLESÍA</h1>
   </section>
 
-  <section class="content">
-    <h2>Conteúdo</h2>
+  <!-- PRODUTO -->
+  <section class="products">
+    <div class="card" onclick="openModal()">
+      <div class="card-img">
+        <img src="camiseta-frente.jpg" class="img-front">
+        <img src="camiseta-costas.jpg" class="img-back">
+      </div>
+      <h3>Camiseta EKKLESÍA</h3>
+      <p>Minimalista, pesada e estilosa.</p>
+    </div>
   </section>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>Camiseta EKKLESÍA</h2>
+      <p>Tecido premium, confortável e resistente.</p>
+
+      <h4>Tamanhos</h4>
+      <div class="sizes">
+        <div class="size" onclick="selectSize(this)">P</div>
+        <div class="size" onclick="selectSize(this)">M</div>
+        <div class="size" onclick="selectSize(this)">G</div>
+        <div class="size" onclick="selectSize(this)">GG</div>
+      </div>
+
+      <p>Preço: R$ 89,90</p>
+
+      <button class="buy-btn" onclick="buy()">Comprar no WhatsApp</button>
+    </div>
+  </div>
 
   <script>
     const navbar = document.getElementById('navbar');
+    const modal = document.getElementById('modal');
+    let selectedSize = '';
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -164,6 +250,28 @@
         navbar.classList.remove('compact');
       }
     });
+
+    function openModal() {
+      modal.style.display = 'flex';
+    }
+
+    function selectSize(el) {
+      document.querySelectorAll('.size').forEach(s => s.classList.remove('active'));
+      el.classList.add('active');
+      selectedSize = el.innerText;
+    }
+
+    function buy() {
+      if (!selectedSize) {
+        alert('Selecione um tamanho');
+        return;
+      }
+
+      const msg = `Olá, quero comprar a Camiseta EKKLESÍA - Tamanho: ${selectedSize}`;
+      const url = `https://wa.me/5599999999999?text=${encodeURIComponent(msg)}`;
+
+      window.open(url, '_blank');
+    }
   </script>
 
 </body>
