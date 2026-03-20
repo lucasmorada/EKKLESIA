@@ -181,6 +181,201 @@
       font-weight: 600;
     }
 
+    /* BLOG SECTION */
+.blog-section {
+  background: #000000;
+  padding: 160px 8%;
+  color: #fff;
+  border-radius: 0 !important;
+}
+
+.blog-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.blog-title {
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 60px;
+}
+
+/* CARD */
+.blog-card {
+  background: #0b0b0b;
+  padding: 40px;
+}
+
+/* IMAGE */
+.blog-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+
+/* CONTENT */
+.blog-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+}
+
+/* LEFT */
+.blog-left h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.blog-date {
+  display: block;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* RIGHT */
+.blog-right p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #cfcfcf;
+  margin-bottom: 30px;
+}
+
+/* AUTHOR */
+.blog-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.9rem;
+}
+
+.author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #444;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .blog-content {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-left h2 {
+    font-size: 2.4rem;
+  }
+
+  .blog-image img {
+    height: 300px;
+  }
+}
+
+/* CELLS FOOTER (texto + botões) */
+.cells-footer {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* TEXTO */
+.cells-text {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+/* AÇÕES (botões à direita) */
+.cells-actions {
+  display: flex;
+  gap: 40px;
+}
+
+/* BASE BOTÃO */
+.cell-btn {
+  position: relative;
+  padding: 26px 60px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all .4s ease;
+}
+
+/* ADOLES — outline + fill animado */
+.cell-btn.adoles {
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.cell-btn.adoles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: transform .4s ease;
+  z-index: -1;
+}
+
+.cell-btn.adoles:hover {
+  color: #000;
+}
+
+.cell-btn.adoles:hover::before {
+  transform: translateX(0);
+}
+
+/* JVTD — variação diferente (invertida) */
+.cell-btn.jvtd {
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.cell-btn.jvtd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: transform .4s ease;
+  z-index: -1;
+}
+
+.cell-btn.jvtd:hover {
+  color: #000000;
+}
+
+.cell-btn.jvtd:hover::after {
+  transform: translateX(0);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .cells-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+
+  .cells-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .cell-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 
@@ -210,8 +405,8 @@
   <section class="products">
     <div class="card" onclick="openModal()">
       <div class="card-img">
-        <img src="camiseta-frente.jpg" class="img-front">
-        <img src="camiseta-costas.jpg" class="img-back">
+        <img src="IMAGEM.jpg" class="img-front">
+        <img src="landscape-mountains-black-white.jpg" class="img-back">
       </div>
       <h3>Camiseta EKKLESÍA</h3>
       <p>Minimalista, pesada e estilosa.</p>
@@ -237,6 +432,54 @@
       <button class="buy-btn" onclick="buy()">Comprar no WhatsApp</button>
     </div>
   </div>
+
+  <section class="blog-section">
+  <div class="blog-wrapper">
+
+    <h1 class="blog-title">células.</h1>
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="4DAD7D35-D9C6-4CA0-BBF9-9002DC120159.JPG.jpeg" alt="Post">
+      </div>
+
+      <div class="blog-content">
+        <div class="blog-left">
+          <h2>uma rede em <br>células</h2>
+          <span class="blog-date">data eu acho</span>
+        </div>
+
+        <div class="blog-right">
+          <p>
+            acreditamos na visão celular e porque deus amou o mundo de tal maneira
+            que deu sei filho unigenito para que todos aqueles que nele crê, não pereça mas tenha a vida eterna.
+          </p>
+
+          <div class="blog-author">
+            <div class="author-avatar"></div>
+            <span>foto do vini se pá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cells-footer">
+
+  <p class="cells-text">conheça nossas células:</p>
+
+  <div class="cells-actions">
+    <a href="adoles.html" class="cell-btn adoles">
+      <span>ADOLES</span>
+    </a>
+
+    <a href="jvtd.html" class="cell-btn jvtd">
+      <span>JVTD</span>
+    </a>
+  </div>
+
+</div>
+  </div>
+</section>
 
   <script>
     const navbar = document.getElementById('navbar');
