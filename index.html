@@ -14,12 +14,14 @@
     .menu-btn { font-size: 24px; cursor: pointer; }
 
     header {
-  position: fixed;
+   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
   width: 100%;
-  background: transparent;
-  transition: all 0.4s ease;
+  max-width: 100%;
+  padding: 20px;
+  transition: all 0.35s ease;
   z-index: 30;
 }
 
@@ -28,18 +30,12 @@ header.default {
   padding: 20px;
 }
 
-/* ESTADO SCROLL (dynamic island) */
 header.scrolled {
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
+  transform: translateX(-50%) scale(0.92);
+  top: 10px;
   max-width: 700px;
-  padding: 12px 20px;
   border-radius: 40px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
 }
 
@@ -388,9 +384,6 @@ header.scrolled {
 </section>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('active');
-  }
 
   function openModal() {
     document.getElementById('modal').classList.add('active');
@@ -425,6 +418,23 @@ header.scrolled {
     header.classList.add('default');
   }
 });
+
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  const header = document.querySelector('header');
+  const btn = document.querySelector('.menu-btn');
+
+  menu.classList.toggle('active');
+
+  if (menu.classList.contains('active')) {
+    header.classList.remove('scrolled');
+    header.classList.add('default');
+    btn.style.opacity = '0';
+  } else {
+    btn.style.opacity = '1';
+  }
+}
+
 
 </script>
 
