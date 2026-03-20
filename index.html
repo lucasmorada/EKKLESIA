@@ -181,6 +181,98 @@
       font-weight: 600;
     }
 
+    
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  padding: 20px 0;
+  pointer-events: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 13s linear infinite;
+}
+
+.marquee span {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-right: 40px;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* IMAGE MARQUEE */
+.image-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #151515; 
+  padding: 8px 0;     
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 50;
+}
+
+.image-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: image-marquee 25s linear infinite;
+}
+
+.image-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+}
+
+.marquee-group img {
+  width: 140px;
+  height: 80px;
+  object-fit: contain; 
+  margin-right: 28px;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all .35s ease;
+}
+
+.marquee-group img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* animação infinita real */
+@keyframes image-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/*mobile*/
+@media (max-width: 768px) {
+  .marquee-group img {
+    width: 120px;
+    height: 70px;
+  }
+}
+
+
     /* BLOG SECTION */
 .blog-section {
   background: #000000;
@@ -432,6 +524,52 @@
       <button class="buy-btn" onclick="buy()">Comprar no WhatsApp</button>
     </div>
   </div>
+
+  <!-- IMAGE MARQUEE -->
+<div class="image-marquee">
+  <div class="image-marquee-track">
+    <!-- bloco duplicado (IMPORTANTE pro infinito) -->
+    <div class="marquee-group">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+    </div>
+
+    <div class="marquee-group">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+    </div>
+
+    <div class="marquee-group">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+    </div>
+
+    <div class="marquee-group">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+    </div>
+
+    <div class="marquee-group">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+      <img src="PLaybege.png" alt="">
+    </div>
+  </div>
+</div>
 
   <section class="blog-section">
   <div class="blog-wrapper">
